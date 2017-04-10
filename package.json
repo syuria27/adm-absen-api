@@ -1,0 +1,26 @@
+{
+  "name": "adm-absen-api",
+  "version": "1.0.0",
+  "description": "API absen for administrator",
+  "main": "server.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/syuria27/adm-absen-api.git"
+  },
+  "author": "Syukron Rizqi Ardhi",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/syuria27/adm-absen-api/issues"
+  },
+  "homepage": "https://github.com/syuria27/adm-absen-api#readme",
+  "dependencies": {
+    "MD5": "^1.3.0",
+    "body-parser": "^1.17.1",
+    "express": "^4.15.2",
+    "isset": "^1.0.3",
+    "mysql": "^2.13.0"
+  }
+}
