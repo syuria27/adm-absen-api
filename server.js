@@ -1,4 +1,5 @@
 var express = require("express");
+var cors = require ("cors");
 var mysql   = require("mysql");
 var bodyParser  = require("body-parser");
 var md5 = require("MD5");
@@ -33,6 +34,7 @@ REST.prototype.connectMysql = function() {
 
 REST.prototype.configureExpress = function(pool) {
       var self = this;
+      app.use(cors());
       app.use(bodyParser.urlencoded({ extended: true }));
       app.use(bodyParser.json());
       var router = express.Router();
