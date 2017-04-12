@@ -4,7 +4,8 @@ var mysql   = require("mysql");
 var bodyParser  = require("body-parser");
 var md5 = require("MD5");
 var login = require("./login.js");
-var user = require("./user.js")
+var user = require("./user.js");
+var absen = require("./absen.js")
 var app  = express();
 
 function REST(){
@@ -41,7 +42,7 @@ REST.prototype.configureExpress = function(pool) {
       app.use('/api', router);
       var login_router = new login(router,pool,md5);
       var user_router = new user(router,pool);
-      
+      var absen_router = new absen(router,pool);
       // Handle 404 - Keep this as a last route
       app.use(function(req, res, next) {
           res.status(400);
