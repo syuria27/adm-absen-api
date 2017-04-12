@@ -35,6 +35,7 @@ USER_ROUTER.prototype.handleRoutes= function(router,pool) {
 			        res.json(data);
 			    } else {
 		            if(rows.length > 0){
+		            	console.log(rows);
 		               	data.error = false;
 				        data.error_msg = 'Success..';				        
 				        data.users = rows;
