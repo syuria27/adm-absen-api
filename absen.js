@@ -16,10 +16,7 @@ ABSEN_ROUTER.prototype.handleRoutes= function(router,pool) {
 			absen : []
 		};
 
-		var query = `SELECT a.kode_absen, DATE_FORMAT(a.tanggal, '%d-%m-%Y') as tgl, 
-					IFNULL(a.jam_masuk,''),IFNULL(a.lokasi_masuk,''),
-					IFNULL(a.jam_pulang,''),IFNULL(a.lokasi_pulang,''),
-					u.nama_spg, u.nama_toko, u.depot
+		var query = `SELECT a.*, DATE_FORMAT(a.tanggal, '%d-%m-%Y') as tgl, u.nama_spg, u.nama_toko, u.depot
 					FROM absen a LEFT JOIN t_user u ON a.uid = u.kode_spg
         			WHERE uid = ? AND MONTH(tanggal) = ? AND YEAR(tanggal) = ?`;
         
