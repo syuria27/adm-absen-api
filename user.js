@@ -52,17 +52,22 @@ USER_ROUTER.prototype.handleRoutes= function(router,pool) {
 	    
     });
 
-    router.get("/user/:kode_spg",function(req,res){
+    router.get("/user/:depot/:kode_spg",function(req,res){
     	var data = {
     		error:true,
 			error_msg:"",
 			user : {}
 		};
 
-		var query = `SELECT kode_spg, nama_spg, nama_toko, depot
+		if (req.params.depot === "Admin_1") {
+			var query = `SELECT kode_spg, nama_spg, nama_toko, depot
         			FROM t_user WHERE kode_spg = ?`;	
-		
-	    var table = [req.params.kode_spg];
+			var table = [req.params.kode_spg];
+		}else{
+			var query = `SELECT kode_spg, nama_spg, nama_toko, depot
+        			FROM t_user WHERE kode_spg = ? AND depot = ?`;
+			var table = [req.params.kode_spg, req.params.depot];
+		}
 	    query = mysql.format(query,table);
 	    pool.getConnection(function(err,connection){
 		    connection.query(query,function(err,rows){
